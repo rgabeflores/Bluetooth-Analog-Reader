@@ -57,14 +57,6 @@ public class DataHandler extends Application{
     }
 
     /**
-     *
-     * @return
-     */
-    public Double getLatestWindData(){
-        return windData.getLatestData();
-    }
-
-    /**
      * This function retrieves the wave data from the past 60 seconds.
      * @return
      */
@@ -73,27 +65,11 @@ public class DataHandler extends Application{
     }
 
     /**
-     *
-     * @return
-     */
-    public Double getLatestWaveData(){
-        return waveData.getLatestData();
-    }
-
-    /**
      * This function retrieves the solar data from the past 60 seconds.
      * @return
      */
     public EnergyData getSolarData(){
         return solarData;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Double getLatestSolarData(){
-        return solarData.getLatestData();
     }
 
     public EnergyData[] getAllData(){
