@@ -1,13 +1,12 @@
 package com.icpdasusa.analogreader;
 
-import android.app.Application;
 import android.util.Log;
 
 /**
  * This is a singleton class that handles the data for multiple activities to use. It saves the data captured
  * through the <code>MainActivity</code> and manages the historical data which can be used for <code>GraphActivity</code>.
  */
-public class DataHandler extends Application{
+public class DataHandler{
 
     /**
      * For debugging purposes.
@@ -34,6 +33,9 @@ public class DataHandler extends Application{
      */
     private EnergyData solarData;
 
+    /**
+     * The array of all data
+     */
     private EnergyData allData[] = {windData, waveData, solarData};
 
     /**
@@ -72,6 +74,10 @@ public class DataHandler extends Application{
         return solarData;
     }
 
+    /**
+     * Get each type of data.
+     * @return an array containing each type of data
+     */
     public EnergyData[] getAllData(){
         return allData;
     }
@@ -99,9 +105,9 @@ public class DataHandler extends Application{
     }
 
     /**
-     *
-     * @param src
-     * @param value
+     * Add data of a specific type.
+     * @param src the type of data
+     * @param value the data value
      */
     public void addData(Source src, Double value){
         if(src == Source.WIND) windData.addLatestData(value);
