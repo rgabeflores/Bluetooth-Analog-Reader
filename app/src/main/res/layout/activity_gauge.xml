@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:gauge="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    tools:context=".GaugeActivity">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:gravity="center">
+                <de.nitri.gauge.Gauge
+                    android:id="@+id/windGauge"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    gauge:labelTextSize="28"
+                    gauge:needleColor="@color/wind"
+                    gauge:initialValue="0"
+                    gauge:maxValue="10"
+                    gauge:minValue="0"
+                    gauge:totalNicks="100"
+                    gauge:valuePerNick="0.1"
+                    gauge:upperText="@string/wind_label"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <de.nitri.gauge.Gauge
+                    android:id="@+id/waveGauge"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    gauge:labelTextSize="28"
+                    gauge:needleColor="@color/wave"
+                    gauge:initialValue="0"
+                    gauge:maxValue="10"
+                    gauge:minValue="0"
+                    gauge:totalNicks="100"
+                    gauge:valuePerNick="0.1"
+                    gauge:upperText="@string/wave_label"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <de.nitri.gauge.Gauge
+                    android:id="@+id/solarGauge"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    gauge:labelTextSize="28"
+                    gauge:needleColor="@color/solar"
+                    gauge:initialValue="0"
+                    gauge:maxValue="10"
+                    gauge:minValue="0"
+                    gauge:totalNicks="100"
+                    gauge:valuePerNick="0.1"
+                    gauge:upperText="@string/solar_label"/>
+            </TableRow>
+        </TableLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/viewLiveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/live_button_label"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+            <Button
+                android:id="@+id/viewGraphButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/graph_button_label"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
