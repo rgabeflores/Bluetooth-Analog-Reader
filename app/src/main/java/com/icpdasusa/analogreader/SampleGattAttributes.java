@@ -5,7 +5,8 @@ import java.math.BigInteger;
 import java.util.UUID;
 
 /**
- * This class includes a small subset of standard GATT attributes for demonstration purposes.
+ * This class includes a set of HM-10 GATT attributes and Bluetooth LE properties
+ * for demonstration purposes.
  */
 public class SampleGattAttributes {
 
@@ -13,13 +14,27 @@ public class SampleGattAttributes {
     private static final UUID CHARACTERISTIC_UUID = UUID.fromString("0000ffe1-0000-1000-8000-00805f9b34fb");
     private static final byte[] HM10_ADAPTER_ADDRESS = parseMAC("7C:01:0A:77:10:72");
 
+    /**
+     * Gets the MAC adddress
+     * @return the MAC address
+     */
     public static byte[] getMAC(){
         return HM10_ADAPTER_ADDRESS;
     }
-    public static UUID getServiceId(){
+
+    /**
+     * Get the service UUID
+     * @return the service UUID
+     */
+    public static UUID getServiceUUID(){
         return SERVICE_ID;
     }
-    public static UUID getCharacteristicId(){
+
+    /**
+     * Gets the characteristic UUID
+     * @return the characteristic UUID
+     */
+    public static UUID getCharacteristicUUID(){
         return CHARACTERISTIC_UUID;
     }
 

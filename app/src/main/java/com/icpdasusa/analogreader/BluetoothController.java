@@ -31,13 +31,13 @@ public class BluetoothController extends Application {
     /**
      * These are the UUIDs specific to the HM-10 device's GATT server profile.
      */
-    private static final UUID SERVICE_ID = SampleGattAttributes.getServiceId();
-    private static final UUID CHARACTERISTIC_UUID = SampleGattAttributes.getCharacteristicId();
+    private static final UUID SERVICE_ID = SampleGattAttributes.getServiceUUID();
+    private static final UUID CHARACTERISTIC_UUID = SampleGattAttributes.getCharacteristicUUID();
 
     /**
-     * The MAC address of the HM-10.
+     * The MAC address of the Bluetooth LE device as specified in <code>SampleGattAttributes</code>.
      */
-    private static final byte[] HM10_ADAPTER_ADDRESS = SampleGattAttributes.getMAC();
+    private static final byte[] MAC_ADDRESS = SampleGattAttributes.getMAC();
 
     /**
      * The <code>DataHandler</code> that saves and handles the data for the activities to use.
@@ -96,7 +96,7 @@ public class BluetoothController extends Application {
         mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
         mBluetoothLeScanner.startScan(mScanCallback);
 
-        mBluetoothDevice = mBluetoothAdapter.getRemoteDevice(HM10_ADAPTER_ADDRESS);
+        mBluetoothDevice = mBluetoothAdapter.getRemoteDevice(MAC_ADDRESS);
 
         mGatt = mBluetoothDevice.connectGatt(this, false, mGattCallback);
     }
@@ -144,7 +144,7 @@ public class BluetoothController extends Application {
         @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             if (status != BluetoothGatt.GATT_SUCCESS) {
-                // Handle the error
+                Log.w(TAG, "There was an issue with the GATT services. status code: " + status);
                 return;
             }
             // Get the service
@@ -177,6 +177,11 @@ public class BluetoothController extends Application {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             readCounterCharacteristic(characteristic);
         }
+
+        /**
+         * Reads the characteristic value.
+         * @param characteristic the GATT characteristic
+         */
         private void readCounterCharacteristic(BluetoothGattCharacteristic characteristic) {
             if (CHARACTERISTIC_UUID.equals(characteristic.getUuid())) {
                 byte[] data = characteristic.getValue();
