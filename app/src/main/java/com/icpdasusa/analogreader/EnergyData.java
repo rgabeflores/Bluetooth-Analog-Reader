@@ -14,11 +14,6 @@ public class EnergyData {
     private Queue<Double> data;
 
     /**
-     * The last data that was stored.
-     */
-    private Double lastData;
-
-    /**
      * The size of the data.
      */
     private int length;
@@ -57,20 +52,11 @@ public class EnergyData {
     }
 
     /**
-     * Retrieves the last data value added.
-     * @return a <code>Double</code> of the last data added.
-     */
-    public Double getLatestData(){
-        return lastData;
-    }
-
-    /**
      * This function adds a new data point.
      * @param value The new data point to be added
      */
     public void addLatestData(Double value){
         if(data.size() > length) data.remove(); // Ensure that the Queue does not overgrow
         data.add(value);
-        lastData = value;
     }
 }
