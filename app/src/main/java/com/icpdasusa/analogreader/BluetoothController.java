@@ -31,7 +31,7 @@ public class BluetoothController extends Application{
     private final String TAG = this.getClass().getSimpleName();
 
     /**
-     * These are the UUIDs specific to the HM-10 device's GATT server profile.
+     * These are the UUIDs specific to the HM-10 device's GATT server profile specified in <code>SampleGattAttributes</code>
      */
     private static final UUID SERVICE_ID = SampleGattAttributes.getServiceUUID();
     private static final UUID CHARACTERISTIC_UUID = SampleGattAttributes.getCharacteristicUUID();

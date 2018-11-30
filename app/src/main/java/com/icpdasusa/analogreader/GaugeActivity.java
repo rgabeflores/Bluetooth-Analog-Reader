@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import de.nitri.gauge.Gauge;
 
+/**
+ * This activity displays the live data on graphical gauges.
+ */
 public class GaugeActivity extends BaseActivity {
 
     /**
