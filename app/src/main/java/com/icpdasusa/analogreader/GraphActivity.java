@@ -23,6 +23,9 @@ public class GraphActivity extends BaseActivity {
      */
     private final String TAG = this.getClass().getSimpleName();
 
+    /**
+     * This is the size of each line on the graph.
+     */
     private static final int LINE_SIZE = 10;
 
     @Override
@@ -42,55 +45,44 @@ public class GraphActivity extends BaseActivity {
         graph.setTitle("1 Minute History");
         graph.setTitleTextSize(72);
 
-        // Used to access all data
+        // Get singleton instance of DataHandler
         DataHandler dataHandler = DataHandler.getInstance();
 
-//        EnergyData allData[] = dataHandler.getAllData();
-
+        // Get each collection of data
         EnergyData windData = dataHandler.getWindData();
         EnergyData waveData = dataHandler.getWaveData();
         EnergyData solarData = dataHandler.getSolarData();
 
-        LineGraphSeries<DataPoint> windSeries = new LineGraphSeries<>();
-        ArrayList<Double> windDataValues = new ArrayList<>(windData.getData());
-        for(int x = 0; x < windDataValues.size(); x++)
-            windSeries.appendData(new DataPoint(x,windDataValues.get(x)), true, dataHandler.getLength());
-        windSeries.setColor(Color.RED);
-        windSeries.setThickness(LINE_SIZE);
-        windSeries.setAnimated(true);
+        // Create series for each collection of data
+        LineGraphSeries<DataPoint> windSeries = initSeries(windData, Color.RED);
+        LineGraphSeries<DataPoint> waveSeries = initSeries(waveData, Color.BLUE);
+        LineGraphSeries<DataPoint> solarSeries = initSeries(solarData, Color.GREEN);
 
-        LineGraphSeries<DataPoint> waveSeries = new LineGraphSeries<>();
-        ArrayList<Double> waveDataValues = new ArrayList<>(waveData.getData());
-        for(int x = 0; x < waveDataValues.size(); x++)
-            waveSeries.appendData(new DataPoint(x,waveDataValues.get(x)), true, dataHandler.getLength());
-        waveSeries.setColor(Color.BLUE);
-        waveSeries.setThickness(LINE_SIZE);
-        waveSeries.setAnimated(true);
-
-        LineGraphSeries<DataPoint> solarSeries = new LineGraphSeries<>();
-        ArrayList<Double> solarDataValues = new ArrayList<>(solarData.getData());
-        for(int x = 0; x < solarDataValues.size(); x++)
-            solarSeries.appendData(new DataPoint(x,solarDataValues.get(x)), true, dataHandler.getLength());
-        solarSeries.setColor(Color.GREEN);
-        solarSeries.setThickness(LINE_SIZE);
-        solarSeries.setAnimated(true);
-
+        // Add each series to the graph
         graph.addSeries(windSeries);
         graph.addSeries(waveSeries);
         graph.addSeries(solarSeries);
     }
 
-
     /**
-     * This function is a wrapper for adding a new <code>DataPoint</code>. It adds the new <code>DataPoint</code>
-     * to the end of the series.
-     * @param value the y value of the new <code>DataPoint</code>
+     * Initialize a series based off an <code>EnergyData</code> collection of data.
+     * @param data the <code>EnergyData</code> containing the values
+     * @param color the color of the line displayed on the graph
+     * @return a complete series to add to the graph
      */
-    private void addDataPoint(double value){
-//        series.appendData(
-////                new DataPoint(MAX_DATA_POINTS, value),
-////                true,
-////                MAX_DATA_POINTS
-////        );
+    public LineGraphSeries<DataPoint> initSeries(EnergyData data, int color){
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+
+        ArrayList<Double> values = new ArrayList<>(data.getData());
+
+        int size = values.size();
+
+        for(int x = 0; x < size; x++)
+            series.appendData(new DataPoint(x, values.get(x)), true, size);
+        series.setColor(color);
+        series.setThickness(LINE_SIZE);
+        series.setAnimated(true);
+
+        return series;
     }
 }
