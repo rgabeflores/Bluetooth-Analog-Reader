@@ -10,7 +10,10 @@ import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
 
-    private static final String TAG = "MAIN";
+    /**
+     * For debugging purposes.
+     */
+    private final String TAG = this.getClass().getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState){

@@ -18,7 +18,10 @@ import java.util.ArrayList;
  */
 public class GraphActivity extends BaseActivity {
 
-    private static final String TAG = "GraphActivity";
+    /**
+     * For debugging purposes.
+     */
+    private final String TAG = this.getClass().getSimpleName();
 
     private static final int LINE_SIZE = 10;
 

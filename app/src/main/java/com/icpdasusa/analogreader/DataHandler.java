@@ -11,7 +11,7 @@ public class DataHandler{
     /**
      * For debugging purposes.
      */
-    private final String TAG = "DATAHANDLER";
+    private final String TAG = this.getClass().getSimpleName();
 
     /**
      * <code>Source</code> enum is used to represent the different types of data

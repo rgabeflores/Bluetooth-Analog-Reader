@@ -14,7 +14,6 @@ import android.bluetooth.BluetoothProfile;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
-import android.content.Context;
 import android.util.Log;
 
 import java.nio.charset.Charset;
@@ -24,9 +23,12 @@ import java.util.UUID;
 /**
  * This class handles all of the Bluetooth processes.
  */
-public class BluetoothController extends Application {
+public class BluetoothController extends Application{
 
-    private static final String TAG = "BluetoothController";
+    /**
+     * For debugging purposes.
+     */
+    private final String TAG = this.getClass().getSimpleName();
 
     /**
      * These are the UUIDs specific to the HM-10 device's GATT server profile.
@@ -167,35 +169,30 @@ public class BluetoothController extends Application {
         }
         @Override
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-            readCounterCharacteristic(characteristic);
+            readCharacteristic(characteristic);
         }
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status){
-            readCounterCharacteristic(characteristic);
+            readCharacteristic(characteristic);
         }
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-            readCounterCharacteristic(characteristic);
+            readCharacteristic(characteristic);
         }
 
         /**
          * Reads the characteristic value.
          * @param characteristic the GATT characteristic
          */
-        private void readCounterCharacteristic(BluetoothGattCharacteristic characteristic) {
+        private void readCharacteristic(BluetoothGattCharacteristic characteristic) {
             if (CHARACTERISTIC_UUID.equals(characteristic.getUuid())) {
                 byte[] data = characteristic.getValue();
                 // Arduino outputs ASCII
                 String output = new String(data, Charset.forName("US-ASCII"));
                 // Each signal value is delimited by a new line
                 String values[] = output.split("\n");
-                dataHandler.addAllData(Double.parseDouble(values[0]),Double.parseDouble(values[1]),Double.parseDouble(values[2]));
-
-                /*
-                    Check the current Activity to update the corresponding views.
-                 */
-                Activity currentActivity = ((BluetoothController)getApplicationContext()).getCurrentActivity();
-                updateActivityViews(currentActivity, values);
+                updateData(values);
+                updateViews(values);
             }
         }
     };
@@ -217,10 +214,24 @@ public class BluetoothController extends Application {
         this.mCurrentActivity = mCurrentActivity;
     }
 
-    public void updateActivityViews(Activity mCurrentActivity, String[] values){
+    /**
+     * Updates the data by adding it to the <code>DataHandler</code>.
+     * @param values the values to add
+     */
+    public void updateData(String[] values){
+        dataHandler.addAllData(Double.parseDouble(values[0]),Double.parseDouble(values[1]),Double.parseDouble(values[2]));
+    }
+
+    /**
+     * Updates the views of the currently visible activity.
+     *
+     * @param values the values to display through the views
+     */
+    public void updateViews(String[] values){
+        Activity mCurrentActivity = ((BluetoothController)getApplicationContext()).getCurrentActivity();
         if(mCurrentActivity instanceof GraphActivity) {
             Log.i(TAG, "Current Activity is GraphActivity");
-            // TODO: implement live graph updating
+            // TODO: implement optional live graph updating
         }
         else if(mCurrentActivity instanceof GaugeActivity) {
             Log.i(TAG, "Current Activity is GaugeActivity");

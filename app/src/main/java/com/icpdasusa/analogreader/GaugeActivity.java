@@ -11,7 +11,10 @@ import de.nitri.gauge.Gauge;
 
 public class GaugeActivity extends BaseActivity {
 
-    private static final String TAG = "GAUGE";
+    /**
+     * For debugging purposes.
+     */
+    private final String TAG = this.getClass().getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
