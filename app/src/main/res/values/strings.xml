@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AnalogReader</string>
 
-    <string name="title">Energy Reading</string>
+    <string name="title">Energy Reader</string>
     <string name="main_label">Live</string>
     <string name="wind_label">Wind: </string>
     <string name="wave_label">Wave: </string>
