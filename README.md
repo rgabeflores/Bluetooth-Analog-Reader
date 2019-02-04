@@ -3,9 +3,9 @@ This Android application connects with an Arduino to HM-10 Bluetooth LE adapter 
 
 ## Screenshots
 
-![Live Data](https://github.com/rgabeflores/Bluetooth-Analog-Reader/screenshots/live-page.jpg)
-![Live Data on Gauges](https://github.com/rgabeflores/Bluetooth-Analog-Reader/screenshots/gauge-page.jpg)
-![Historical Data on Graph](https://github.com/rgabeflores/Bluetooth-Analog-Reader/screenshots/graph-page.jpg)
+![Live Data](https://github.com/rgabeflores/Bluetooth-Analog-Reader/tree/master/screenshots/live-page.jpg)
+![Live Data on Gauges](https://github.com/rgabeflores/Bluetooth-Analog-Reader/tree/master/screenshots/gauge-page.jpg)
+![Historical Data on Graph](https://github.com/rgabeflores/Bluetooth-Analog-Reader/tree/master/screenshots/graph-page.jpg)
 
 ## Built With
 
