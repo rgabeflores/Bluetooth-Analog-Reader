@@ -8,6 +8,7 @@ This Android application connects with an Arduino to HM-10 Bluetooth LE adapter 
     <img src="https://github.com/rgabeflores/Bluetooth-Analog-Reader/blob/master/screenshots/graph-page.jpg?raw=true" width="40%">
     <img src="https://github.com/rgabeflores/Bluetooth-Analog-Reader/blob/master/screenshots/gauge-page.jpg?raw=true" width="20%">
 </div>
+
 ## Built With
 
 * [BluetoothGatt](https://github.com/googlesamples/android-BluetoothLeGatt) - Reading data from Bluetooth LE device
