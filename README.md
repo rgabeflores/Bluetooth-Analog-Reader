@@ -18,6 +18,7 @@ An Android application listens to an Arduino via Bluetooth LE to display live da
 3. Open the Android application with [Android Studio](https://developer.android.com/studio/)
 
 `/Arduino-Sensor` contains the Arduino (C++) script.
+
 `/Android-App` contains the Android Studio project files for the Android application.
 
 ## Required Libraries
