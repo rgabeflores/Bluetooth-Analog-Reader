@@ -1,6 +1,7 @@
 # Bluetooth Analog Reader
 
-Analog sensors are connected to an Arduino's serial pins to continuously read data. The Arduino is reads the data and outputs the values to an HM-10 Bluetooth LE device. While the HM-10 broadcasts the values, an Android application listens to the HM-10's broadcasts via its GATT service profile. The Android application displays the live data and has a graph view for historical data.
+An Android application listens to an Arduino via Bluetooth LE to display live data with a graph view for historical plots. Analog sensors are connected to the Arduino's serial pins to continuously read data. The Arduino reads the data and outputs the values to an [HM-10](http://fab.cba.mit.edu/classes/863.15/doc/tutorials/programming/bluetooth.html). While the HM-10 broadcasts the values, the Android application listens to the HM-10 via its GATT service profile.
+
 
 ## Screenshots
 
