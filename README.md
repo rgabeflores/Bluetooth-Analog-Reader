@@ -1,5 +1,6 @@
 # Bluetooth Analog Reader
-This Android application connects with an Arduino to HM-10 Bluetooth LE adapter setup and reads output ASCII data from the HM-10 GATT services.
+
+Analog sensors are connected to an Arduino's serial pins to continuously read data. The Arduino is reads the data and outputs the values to an HM-10 Bluetooth LE device. While the HM-10 broadcasts the values, an Android application listens to the HM-10's broadcasts via its GATT service profile. The Android application displays the live data and has a graph view for historical data.
 
 ## Screenshots
 
@@ -9,12 +10,25 @@ This Android application connects with an Arduino to HM-10 Bluetooth LE adapter 
     <img src="https://github.com/rgabeflores/Bluetooth-Analog-Reader/blob/master/screenshots/gauge-page.jpg?raw=true" width="20%">
 </div>
 
-## Built With
+## Installation
 
-* [BluetoothGatt](https://github.com/googlesamples/android-BluetoothLeGatt) - Reading data from Bluetooth LE device
-* [Pygmalion Gauge View](https://github.com/Pygmalion69/Gauge) - Displaying data on gauges
-* [GraphView](https://github.com/jjoe64/GraphView) - Displaying data on gauges
+1. Clone the repository at this [link](https://github.com/rgabeflores/Bluetooth-Analog-Reader.git).
+2. Upload the Arduino script to the Arduino through the [Arduino IDE](https://www.arduino.cc/en/main/software)
+3. Open the Android application with [Android Studio](https://developer.android.com/studio/)
 
-## Authors
+*  `/Arduino-Sensor` contains the Arduino (C++) script
+* `/Android-App` contains the Android Studio project files for the Android application
 
-* **Gabriel Flores** - [rgabeflores](https://github.com/rgabeflores)
+## Required Libraries
+
+* [BluetoothGatt](https://github.com/googlesamples/android-BluetoothLeGatt)
+    * Reading data from Bluetooth LE device
+* [Pygmalion Gauge View](https://github.com/Pygmalion69/Gauge)
+    * Displaying data on gauges
+* [GraphView](https://github.com/jjoe64/GraphView)
+    * Displaying data on gauges
+
+## Contributors
+
+* [Gabriel Flores](https://github.com/rgabeflores)
+* Steve Sin
