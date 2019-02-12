@@ -17,8 +17,8 @@ An Android application listens to an Arduino via Bluetooth LE to display live da
 2. Upload the Arduino script to the Arduino through the [Arduino IDE](https://www.arduino.cc/en/main/software)
 3. Open the Android application with [Android Studio](https://developer.android.com/studio/)
 
-*  `/Arduino-Sensor` contains the Arduino (C++) script
-* `/Android-App` contains the Android Studio project files for the Android application
+`/Arduino-Sensor` contains the Arduino (C++) script.
+`/Android-App` contains the Android Studio project files for the Android application.
 
 ## Required Libraries
 
