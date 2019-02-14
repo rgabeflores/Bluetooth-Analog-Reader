@@ -32,5 +32,5 @@ An Android application listens to an Arduino via Bluetooth LE to display live da
 
 ## Contributors
 
-* [Gabriel Flores](https://github.com/rgabeflores)
+* [Gabriel Flores](https://github.com/rgabeflores) - [LinkedIn](https://www.linkedin.com/in/rgabrielflores/)
 * Steve Sin
